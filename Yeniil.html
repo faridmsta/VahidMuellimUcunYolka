@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Santa Klaus </title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgb(0, 0, 129);
+      }
+      main {
+        
+        font-family: "Quicksand", sans-serif;
+        font-size: 32px;
+        font-weight: 600;
+        text-align: center;
+      }
+      main p {
+        color: rgba(255, 255, 255, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <main></main>
+    <script>
+      let input = prompt("Please enter the Text:", "YENIIL");
+      if (input == null || input == "") {
+        text = "User gives empty prompt"
+      } else {
+        text = input.toUpperCase()
+      }
+      const main = document.querySelector("main");
+      const size = Math.ceil(screen.width / 32 ) +1;
+
+      let code = "";
+      let index = 0;
+
+      function plus() {
+        index++;
+        index == 6 && (index = 0);
+      }
+
+      for (let i = 0; i < size; i++) {
+        code += "<p>";
+        for (j = i; j < size; j++) {
+          code += `${text[index]}`;
+          plus();
+        }
+        for (j = 1; j <= 2 * i - 1; j++) {
+          code += `<span style="color: white;">${text[index]}</span>`;
+          plus();
+        }
+        for (j = 0; j < size - i; j++) {
+          code += `${text[index]}`;
+          plus();
+        }
+        code += "</p>";
+      }
+      main.innerHTML = code;
+    </script>
+  </body>
+</html>
